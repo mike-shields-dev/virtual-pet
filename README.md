@@ -1,6 +1,10 @@
 
 
-# Virtual Pet
+# Virtual Pet 
+<sub><sup>
+Author: Michael Shields
+</sup></sub>
+---
 
 This repository is an assignment from the OOP track of the Manchester Codes Syllabus. The assignment is an opportunity to explore and practice:
 
@@ -60,9 +64,9 @@ JavaScript pets are great. Because they're made of JavaScript, they can do liter
      ```
 3. Testing:
   
-    This repository utilises the [Jest JavaScript testing framework]("https://jestjs.io/"). 
+    This repository utilises the [Jest]("https://jestjs.io/") JavaScript testing framework. 
 
-    Test files are located in the `__tests__` directory. 
+    Test file is located in the `__tests__` directory. 
 
     To run the test suite once: 
     ```bash
@@ -73,22 +77,39 @@ JavaScript pets are great. Because they're made of JavaScript, they can do liter
     npm run test:watch
     ```
 
-## Documentation for Final Solution
+## Pet User Manual
 
+#### Creating and naming a pet: 
+```js
+const pet = new Pet("Ollie");
+```
+The `src/PetConfig.json` file contains the default configuration for instantiating pet instances. Both the Pet class and the Pet test suite use this file to configure Pet instances and the Pet test suite.
+#### Increasing the pet's age:
+```js
+pet.growUp()
+```
+The `AGE`, `FITNESS` and `HUNGER` settings in `src/PetConfig.json`, determine how the `growUp` method changes the pet's respective `age`, `fitness` and `hunger` values. They also determine the thresholds for these properties that will cause the pet to die. Don't worry though! The effects of aging can be counteracted...
+#### Check Up
+The pet will respond with a message, letting you know what it needs.
+```js
+const petResponse = pet.checkUp()
+```
+#### Walking
+Walking the pet will increase it's fitness level.
+```js
+pet.walk()
+```
+#### Feeding
+Feeding the pet will decrease it's hunger level.
+```js
+pet.feed()
+```
+---
+##### Future Features
 
-
-- You can give them a name
-
-- They can get older
-
-- As they get older, they get hungrier and less fit
-
-- You can walk your pet to increase it's fitness. 🏃‍♂️
-
-- You can feed your pet to decrease it's hunger. 🍕
-
-- You can talk to your pet to see if it needs feeding or walking
-
-- If your pet gets too hungry or unfit, it will DIE 💀
-
-- If your pet gets to 30 days old it will DIE 😢
+<sup>
+   - Add support for pets to want to play
+</sup><br/>
+<sup>
+   - Add a happiness property that is determined by all of the pets other properties
+</sup>

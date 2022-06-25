@@ -1,0 +1,36 @@
+{
+  "AGE": {
+    "INIT": 0,
+    "MAX": 30,
+    "INCREMENT": 1
+  },
+  "FITNESS": {
+    "INIT": 10,
+    "MIN": 0,
+    "INCREMENT": 4,
+    "DECREMENT": 3,
+    "THRESHOLD": 3
+  },
+  "HUNGER": {
+    "INIT": 0,
+    "MAX": 10,
+    "INCREMENT": 5,
+    "DECREMENT": 3,
+    "THRESHOLD": 5
+  },
+  "MESSAGES": {
+    "ERROR": {
+      "BAD_NAME": "pet name must be a string or undefined",
+      "IS_DEAD": "Your pet is no longer alive",
+      "ADOPTEE": {
+        "NOT_A_PET": "Pets can only adopt other pets",
+        "IS_DEAD": "Child pet is no longer alive"
+      }
+    },
+    "CHECKUP": {
+      "IS_OK": "I feel great!",
+      "FEED_ME": "I am hungry",
+      "WALK_ME": "I need a walk"
+    }
+  }
+}
