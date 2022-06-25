@@ -223,4 +223,48 @@ describe('isAlive getter method', () => {
     pet.age = AGE_MAX + 1;
     expect(pet.isAlive).toBe(false);
   });
+
+  describe("adoptChild method", () => {
+    it("throws exception when isAlive returns false", () => {
+      const parentPet = new Pet()
+      const childPet = new Pet()
+      parentPet.age = AGE_MAX
+      expect(() => parentPet.adoptChild(childPet)).toThrow(
+        "Parent pet is no longer alive"
+      )
+    })
+
+    it("throws exception when child is not a Pet", () => {
+      const parentPet = new Pet()
+      const childPet = {}
+      expect(() => parentPet.adoptChild(childPet)).toThrow(
+        "Pets can only adopt other pets"
+      )
+    })
+
+    it("throws exception when child is not alive", () => {
+      const parentPet = new Pet()
+      const childPet = new Pet()
+      childPet.age = AGE_MAX
+      expect(() => parentPet.adoptChild(childPet)).toThrow(
+        "Child pet is no longer alive"
+      )
+    })
+
+    it("adds child to children as first element", () => {
+      const parentPet = new Pet()
+      const childPet = new Pet()
+      parentPet.adoptChild(childPet)
+      expect(parentPet.children).toContain(childPet)
+    })
+  })
+
+  describe("adopted children", () => {
+    it("properties are accessible via parent", () => {
+      const parent = new Pet()
+      const child = new Pet()
+      parent.adoptChild(child)
+      expect(parent.children[0].age).toBe(child.age)
+    })
+  })
 });

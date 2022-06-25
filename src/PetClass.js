@@ -23,6 +23,7 @@ class Pet {
     this.age = petConfig.AGE_INIT;
     this.fitness = petConfig.FITNESS_INIT;
     this.hunger = petConfig.HUNGER_INIT;
+    this.children = []
   }
 
   growUp() {
@@ -64,6 +65,14 @@ class Pet {
       petStatus = 'I need a walk';
     }
     return petStatus;
+  }
+
+  adoptChild(child) {
+    if (!this.isAlive) throw 'Parent pet is no longer alive';
+    if (!(child instanceof Pet)) throw 'Pets can only adopt other pets';
+    if (child instanceof Pet && !child.isAlive) throw 'Child pet is no longer alive';
+
+    this.children = [child, ...this.children];
   }
 
   get isAlive() {
