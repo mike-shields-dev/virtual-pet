@@ -243,50 +243,43 @@ describe("Pet methods:", () => {
   })
 
   describe("adoptChild", () => {
-    let parent
-    let child
-
-    beforeEach(() => {
-      parent = new Pet()
-      child = new Pet()
-    })
-
     it("is a function", () => {
       expect(Pet.prototype.adoptChild).toBeInstanceOf(Function)
     })
-  
-    it("throws exception when isAlive returns false", () => {
-      const parentPet = new Pet()
-      const childPet = new Pet()
-      parentPet.age = AGE.MAX
-      expect(() => parentPet.adoptChild(childPet)).toThrow(ERROR.IS_DEAD)
+
+    let parent
+
+    beforeEach(() => {
+      parent = new Pet()
+    })
+
+    it("throws exception when parent is dead", () => {
+      const adoptee = new Pet()
+      parent.age = AGE.MAX
+      expect(() => parent.adoptChild(adoptee)).toThrow(ERROR.IS_DEAD)
     })
   
     it("throws exception when adoptee is not a Pet", () => {
-      const parent = new Pet()
       const adoptee = {}
       expect(() => parent.adoptChild(adoptee)).toThrow(ERROR.ADOPTEE.NOT_A_PET)
     })
   
-    it("throws exception when adoptee is not alive", () => {
-      const parent = new Pet()
-      const child = new Pet()
-      child.age = AGE.MAX
-      expect(() => parent.adoptChild(child)).toThrow(ERROR.ADOPTEE.IS_DEAD)
+    it("throws exception when adoptee is dead", () => {
+      const adoptee = new Pet()
+      adoptee.age = AGE.MAX
+      expect(() => parent.adoptChild(adoptee)).toThrow(ERROR.ADOPTEE.IS_DEAD)
     })
   
     it("adds child to children array", () => {
-      const parent = new Pet()
-      const child = new Pet()
-      parent.adoptChild(child)
-      expect(parent.children).toContain(child)
+      const adoptee = new Pet()
+      parent.adoptChild(adoptee)
+      expect(parent.children).toContain(adoptee)
     })
   
     it("child properties are accessible via parent", () => {
-      const parent = new Pet()
-      const child = new Pet()
-      parent.adoptChild(child)
-      expect(parent.children[0].age).toBe(child.age)
+      const adoptee = new Pet()
+      parent.adoptChild(adoptee)
+      expect(parent.children[0].age).toBe(adoptee.age)
     })
   })
 })
