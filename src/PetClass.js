@@ -67,6 +67,11 @@ class Pet {
     return petStatus;
   }
 
+  haveBaby(name) {
+    if(!this.isAlive) throw 'Your pet is no longer alive';
+    this.children = [new Pet(name), ...this.children];
+  }
+
   adoptChild(child) {
     if (!this.isAlive) throw 'Parent pet is no longer alive';
     if (!(child instanceof Pet)) throw 'Pets can only adopt other pets';

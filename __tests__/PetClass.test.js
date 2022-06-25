@@ -257,10 +257,30 @@ describe('isAlive getter method', () => {
       parentPet.adoptChild(childPet)
       expect(parentPet.children).toContain(childPet)
     })
+
+    it("adopted child properties are accessible via parent", () => {
+      const parent = new Pet()
+      const child = new Pet()
+      parent.adoptChild(child)
+      expect(parent.children[0].age).toBe(child.age)
+    })
   })
 
-  describe("adopted children", () => {
-    it("properties are accessible via parent", () => {
+  describe("haveBaby method", () => {
+    it("throws exception when isAlive returns false", () => {
+      const pet = new Pet()
+      pet.age = AGE_MAX
+      expect(() => pet.haveBaby()).toThrow("Your pet is no longer alive")
+    })
+
+    it("adds new Pet instance to children array", () => {
+      const pet = new Pet()
+      pet.haveBaby()
+      expect(pet.children.length).toBe(1)
+      expect(pet.children[0]).toBeInstanceOf(Pet)
+    })
+
+    it("baby properties are accessible via parent", () => {
       const parent = new Pet()
       const child = new Pet()
       parent.adoptChild(child)
