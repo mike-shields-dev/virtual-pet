@@ -88,28 +88,24 @@ The `src/PetConfig.json` file contains the default configuration for instantiati
 ```js
 pet.growUp()
 ```
-The `AGE`, `FITNESS` and `HUNGER` settings in `src/PetConfig.json`, determine how the `growUp` method changes the pet's respective `age`, `fitness` and `hunger` values. They also determine the thresholds for these properties that will cause the pet to die. Don't worry though! The effects of aging can be counteracted...
-#### Check Up
+The `AGE`, `FITNESS` and `HUNGER` settings in `src/PetConfig.json`, determine how the `growUp` method changes a pet's respective `age`, `fitness` and `hunger` values. They also determine the thresholds for these properties that will cause the pet to die. As the pet ages it's overall health will deteriorate. Don't worry though! The effects of aging can be counteracted. Unfortunately nothing lives forever, so the pet does have a finite lifetime (`AGE.MAX`). 
+#### Checking the pets current status:
 The pet will respond with a message, letting you know what it needs.
 ```js
 const petResponse = pet.checkUp()
 ```
-#### Walking
+#### Exercising the pet:
 Walking the pet will increase it's fitness level.
 ```js
 pet.walk()
 ```
-#### Feeding
+#### Feeding thd pet:
 Feeding the pet will decrease it's hunger level.
 ```js
 pet.feed()
 ```
 ---
-##### Future Features
-
-<sup>
-   - Add support for pets to want to play
-</sup><br/>
-<sup>
-   - Add a happiness property that is determined by all of the pets other properties
-</sup>
+##### Future Features...
+   - Add play method and boredom value
+   - Add wash/clean method and hygiene value
+   - Add a happiness property that is determined by all of the pets other properties 
